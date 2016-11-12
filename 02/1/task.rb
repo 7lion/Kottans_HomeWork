@@ -1,28 +1,23 @@
-require_relative './superhero_comparable'
 require_relative './superhero'
-require_relative './printer'
 
-superman = Superhero.new('Superman', 90, 80, 75)
-batman = Superhero.new('Batman', 60, 85, 80)
-thing = Superhero.new('Thing', 80, 90, 55)
-kostiantyn = Superhero.new('Kostiantyn', 97, 95, 99)
+superman = Superhero.new(name: 'Superman', strength: 90, agility: 80, intelegent: 75)
+batman = Superhero.new(name: 'Batman', strength: 60, agility: 85, intelegent: 80)
+thing = Superhero.new(name: 'Thing', strength: 80, agility: 90, intelegent: 55)
+kostiantyn = Superhero.new(name: 'Kostiantyn', strength: 97, agility: 95, intelegent: 99)
 
 puts '1. Superheroes compare:'
 
-SuperheroComparable.compare(superman, batman)
-SuperheroComparable.compare(thing, batman)
-SuperheroComparable.compare(superman, kostiantyn)
-
 superheroes = [superman, batman, thing, kostiantyn]
+p superheroes.max.name
 
 puts '2. Sort by average values:'
-Printer.print(superheroes.sort.reverse)
+p superheroes.sort.reverse.map { |hero| hero.name }
 
 puts '3. Sort by strength:'
-Printer.print(superheroes.sort_by { |hero| hero.strength }.reverse)
+p superheroes.sort_by(&:strength).reverse.map { |hero| hero.name }
 
 puts '4. Sort by agility:'
-Printer.print(superheroes.sort_by { |hero| hero.agility }.reverse)
+p superheroes.sort_by(&:agility).reverse.map { |hero| hero.name }
 
 puts '5. Sort by intelligence:'
-Printer.print(superheroes.sort_by { |hero| hero.intelligence }.reverse)
+p superheroes.sort_by(&:intelligence).reverse.map { |hero| hero.name }
