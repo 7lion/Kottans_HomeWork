@@ -4,7 +4,7 @@ describe Superhero do
   let(:superhero) { Superhero.new(name: 'Batman', strength: 2, agility: 5.5, intelligence: 10) }
 
   it 'is instance of Comparable' do
-    expect(superhero).to be_an(Comparable)
+    expect(superhero).to be_a(Comparable)
   end
 
   context '.initialize' do
@@ -22,7 +22,15 @@ describe Superhero do
   end
   context '.average_value' do
     it 'count average of superhero' do
-      expect(superhero.average_value).to eq(5.8)
+      expect(superhero.average_value.round(1)).to eq(5.8)
+    end
+  end
+  context '.<>' do
+    it 'compare two superheroes' do
+      batman = superhero
+      spiderman = Superhero.new(name: 'Spiderman', strength: 6, agility: 10, intelligence: 3)
+      expect(spiderman > batman).to eq(true)
+      expect(spiderman < batman).to eq(false)
     end
   end
 end

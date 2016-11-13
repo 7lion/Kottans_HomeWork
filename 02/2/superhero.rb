@@ -13,12 +13,6 @@ class Superhero
   end
 
   def average_value
-    ((strength + agility + intelligence) / 3).round(1)
-  end
-
-  def <=>(superhero)
-    raise ArgumentError, "Superhero must by instead of #{self.class.name}" unless superhero.is_a? (self.class)
-
-    self.average_value <=> superhero.average_value
+    ((strength + agility + intelligence) / 3)
   end
 end
